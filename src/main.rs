@@ -9,6 +9,13 @@ fn main() {
     let m = app_from_crate!()
         .arg(Arg::with_name("target")
                 .required(true)
+                .multiple(true)
+                .validator(|x| {
+                    match x.parse::<i32>() {
+                        Ok(_) => Ok(()),
+                        Err(_) => Err(String::from("need numbers")),
+                    }
+                })
                 .help("sort target numbers")
         )
         .arg(Arg::with_name("order")
@@ -19,11 +26,10 @@ fn main() {
         )
         .get_matches();
 
-    let target = m.value_of("target").unwrap();
-    // TODO: validation
-    let target = target.split_whitespace()
-                        .map(|x| x.parse::<i32>().unwrap())
-                        .collect();
+    let target = m.values_of("target")
+                    .unwrap()
+                    .map(|x| x.parse::<i32>().unwrap())
+                    .collect();
 
     let asc = match m.value_of("order") {
         Some("desc") => false,
