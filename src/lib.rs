@@ -1,4 +1,8 @@
-pub fn sort(input: &mut Vec<i32>) {
+pub fn run(input: &mut Vec<i32>) {
+    sort(input);
+}
+
+fn sort(input: &mut Vec<i32>) {
     input.sort();
 }
 
