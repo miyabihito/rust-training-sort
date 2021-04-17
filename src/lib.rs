@@ -1,9 +1,20 @@
-pub fn run(input: &mut Vec<i32>) {
-    sort(input);
+pub fn run(input: Input) {
+    let mut output = input.target.clone();
+    sort(&mut output);
+
+    let output = output.iter()
+                    .map(|x| x.to_string())
+                    .collect::<Vec<String>>()
+                    .join(" ");
+    println!("{}", output);
 }
 
 fn sort(input: &mut Vec<i32>) {
     input.sort();
+}
+
+pub struct Input {
+    pub target: Vec<i32>,
 }
 
 #[cfg(test)]
