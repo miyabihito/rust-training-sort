@@ -20,9 +20,10 @@ fn main() {
         )
         .arg(Arg::with_name("order")
                 .short("o")
+                .long("order")
                 .takes_value(true)
                 .possible_values(&["asc", "desc"])
-                .help("specify order: asc or desc")
+                .help("specify order")
         )
         .get_matches();
 
