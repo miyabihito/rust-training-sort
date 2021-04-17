@@ -1,15 +1,10 @@
-pub fn run(input: Input) {
+pub fn run(input: Input) -> Vec<i32> {
     let mut output = input.target.clone();
     sort(&mut output);
     if !input.asc {
         output.reverse();
     }
-
-    let output = output.iter()
-                    .map(|x| x.to_string())
-                    .collect::<Vec<String>>()
-                    .join(" ");
-    println!("{}", output);
+    output
 }
 
 fn sort(input: &mut Vec<i32>) {

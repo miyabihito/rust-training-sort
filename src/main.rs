@@ -39,5 +39,10 @@ fn main() {
 
     let input = Input { target, asc };
 
-    rust_training_sort::run(input);
+    let output = rust_training_sort::run(input);
+    let output = output.iter()
+                    .map(|x| x.to_string())
+                    .collect::<Vec<String>>()
+                    .join(" ");
+    println!("{}", output);
 }
