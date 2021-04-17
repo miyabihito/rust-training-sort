@@ -1,6 +1,9 @@
 pub fn run(input: Input) {
     let mut output = input.target.clone();
     sort(&mut output);
+    if !input.asc {
+        output.reverse();
+    }
 
     let output = output.iter()
                     .map(|x| x.to_string())
@@ -15,6 +18,7 @@ fn sort(input: &mut Vec<i32>) {
 
 pub struct Input {
     pub target: Vec<i32>,
+    pub asc: bool,
 }
 
 #[cfg(test)]

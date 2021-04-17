@@ -11,6 +11,12 @@ fn main() {
                 .required(true)
                 .help("sort target numbers")
         )
+        .arg(Arg::with_name("order")
+                .short("o")
+                .takes_value(true)
+                .possible_values(&["asc", "desc"])
+                .help("specify order: asc or desc")
+        )
         .get_matches();
 
     let target = m.value_of("target").unwrap();
@@ -18,7 +24,13 @@ fn main() {
     let target = target.split_whitespace()
                         .map(|x| x.parse::<i32>().unwrap())
                         .collect();
-    let input = Input { target };
+
+    let asc = match m.value_of("order") {
+        Some("desc") => false,
+        _ => true,
+    };
+
+    let input = Input { target, asc };
 
     rust_training_sort::run(input);
 }
