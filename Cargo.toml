@@ -2,6 +2,7 @@
 name = "rust-training-sort"
 version = "0.1.0"
 authors = ["miyabihito <miyabihito.dev@gmail.com>"]
+description = "command for sorting numbers"
 edition = "2018"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
