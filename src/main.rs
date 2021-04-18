@@ -25,6 +25,14 @@ fn main() {
                 .possible_values(&["asc", "desc"])
                 .help("specify order")
         )
+        .arg(Arg::with_name("algorithm")
+                .short("a")
+                .long("algorithm")
+                .takes_value(true)
+                .default_value("default")
+                .possible_values(&["default", "bubble"])
+                .help("sort algorithm")
+        )
         .get_matches();
 
     let target = m.values_of("target")
@@ -37,7 +45,9 @@ fn main() {
         _ => true,
     };
 
-    let input = Input { target, asc };
+    let algorithm = m.value_of("algorithm").unwrap().to_string();
+
+    let input = Input { target, asc, algorithm };
 
     let output = rust_training_sort::run(input);
     let output = output.iter()

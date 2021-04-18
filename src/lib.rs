@@ -1,9 +1,16 @@
 pub fn run(input: Input) -> Vec<i32> {
     let mut output = input.target.clone();
-    sort(&mut output);
+
+    match input.algorithm.as_str() {
+        "default" => sort(&mut output),
+        "bubble" => bubble_sort(&mut output),
+        _ => (),
+    }
+
     if !input.asc {
         output.reverse();
     }
+
     output
 }
 
@@ -24,6 +31,7 @@ fn bubble_sort(target: &mut Vec<i32>) {
 pub struct Input {
     pub target: Vec<i32>,
     pub asc: bool,
+    pub algorithm: String,
 }
 
 #[cfg(test)]

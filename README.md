@@ -10,7 +10,8 @@ FLAGS:
     -V, --version    Prints version information
 
 OPTIONS:
-    -o, --order <order>    specify order [possible values: asc, desc]
+    -a, --algorithm <algorithm>    sort algorithm [default: default]  [possible values: default, bubble]
+    -o, --order <order>            specify order [possible values: asc, desc]
 
 ARGS:
     <target>...    sort target numbers
