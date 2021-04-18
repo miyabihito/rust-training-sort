@@ -7,8 +7,8 @@ pub fn run(input: Input) -> Vec<i32> {
     output
 }
 
-fn sort(input: &mut Vec<i32>) {
-    input.sort();
+fn sort(target: &mut Vec<i32>) {
+    target.sort();
 }
 
 pub struct Input {
@@ -21,10 +21,11 @@ mod test {
     use super::*;
 
     #[test]
-    fn test_sort_asc() {
-        let mut input = vec![3, 2, 1];
-        sort(&mut input);
+    fn test_sort() {
+        let mut target = vec![3, 2, 1];
+        sort(&mut target);
 
-        assert_eq!(vec![1, 2, 3], input);
+        assert_eq!(vec![1, 2, 3], target);
+
     }
 }
