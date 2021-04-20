@@ -7,38 +7,40 @@ use rust_training_sort::Input;
 
 fn main() {
     let m = app_from_crate!()
-        .arg(Arg::with_name("target")
+        .arg(
+            Arg::with_name("target")
                 .required(true)
                 .multiple(true)
-                .validator(|x| {
-                    match x.parse::<i32>() {
-                        Ok(_) => Ok(()),
-                        Err(_) => Err(String::from("need numbers")),
-                    }
+                .validator(|x| match x.parse::<i32>() {
+                    Ok(_) => Ok(()),
+                    Err(_) => Err(String::from("need numbers")),
                 })
-                .help("sort target numbers")
+                .help("sort target numbers"),
         )
-        .arg(Arg::with_name("order")
+        .arg(
+            Arg::with_name("order")
                 .short("o")
                 .long("order")
                 .takes_value(true)
                 .possible_values(&["asc", "desc"])
-                .help("specify order")
+                .help("specify order"),
         )
-        .arg(Arg::with_name("algorithm")
+        .arg(
+            Arg::with_name("algorithm")
                 .short("a")
                 .long("algorithm")
                 .takes_value(true)
                 .default_value("default")
                 .possible_values(&["default", "bubble"])
-                .help("sort algorithm")
+                .help("sort algorithm"),
         )
         .get_matches();
 
-    let target = m.values_of("target")
-                    .unwrap()
-                    .map(|x| x.parse::<i32>().unwrap())
-                    .collect();
+    let target = m
+        .values_of("target")
+        .unwrap()
+        .map(|x| x.parse::<i32>().unwrap())
+        .collect();
 
     let asc = match m.value_of("order") {
         Some("desc") => false,
@@ -47,12 +49,17 @@ fn main() {
 
     let algorithm = m.value_of("algorithm").unwrap().to_string();
 
-    let input = Input { target, asc, algorithm };
+    let input = Input {
+        target,
+        asc,
+        algorithm,
+    };
 
     let output = rust_training_sort::run(input);
-    let output = output.iter()
-                    .map(|x| x.to_string())
-                    .collect::<Vec<String>>()
-                    .join(" ");
+    let output = output
+        .iter()
+        .map(|x| x.to_string())
+        .collect::<Vec<String>>()
+        .join(" ");
     println!("{}", output);
 }
