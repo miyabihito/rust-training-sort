@@ -52,6 +52,5 @@ mod test {
         bubble_sort(&mut target);
 
         assert_eq!(vec![1, 2, 3], target);
-
     }
 }
