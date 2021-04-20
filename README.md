@@ -1,4 +1,6 @@
 # rust-training-sort
+![workflow status](https://github.com/miyabihito/rust-training-sort/actions/workflows/rust.yml/badge.svg)
+
 ```
 command for sorting numbers
 
