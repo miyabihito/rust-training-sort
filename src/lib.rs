@@ -53,4 +53,26 @@ mod test {
 
         assert_eq!(vec![1, 2, 3], target);
     }
+
+    #[test]
+    fn test_run_asc() {
+        let input = Input {
+            target: vec![1, 4, 3, 2],
+            asc: true,
+            algorithm: String::from("default"),
+        };
+
+        assert_eq!(vec![1, 2, 3, 4], run(input));
+    }
+
+    #[test]
+    fn test_run_desc() {
+        let input = Input {
+            target: vec![1, 4, 3, 2],
+            asc: false,
+            algorithm: String::from("bubble"),
+        };
+
+        assert_eq!(vec![4, 3, 2, 1], run(input));
+    }
 }
